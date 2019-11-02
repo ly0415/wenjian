@@ -79,3 +79,13 @@ qqqqqqqqqqqqqqqqqqqqqqqqq
     //        $evaluete_content="阿萨德卡军阿大萨大大阿萨德卡军阿大萨大大阿萨德卡军阿大萨大大阿萨德卡军阿大萨大大阿萨德卡军阿大 .萨大大阿萨德卡军阿大萨大大阿萨德卡军阿大萨大大阿萨德卡军阿大萨大大阿萨德卡军阿大萨大大阿萨德卡军阿大萨大大";
     //        $goods_images=['1111111111111111111.jpg','2222222222222.jpg','333333333.jpg'];
     //        $star_num=[1,2,3];
+
+
+
+    //        $userid=34317;
+    //        $data['headimgurl']='sdadad';
+    //        $data['username']='达到第三色图分身乏术';
+    //        $data['phone']='18612844870';
+    //        $data['email']='16822222465@qq.com';
+    //        $data['sex']=2;
+    //        $data['birth']='2018-15-12';
