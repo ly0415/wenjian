@@ -70,6 +70,99 @@ get方法访问s中的访问方法  带入参数get('sourcename')
         });
     });
 
+    3、tp5 each 函数
+    这篇文章介绍的内容是关于TP5-分页类中的each函数 ，有着一定的参考价值，现在分享给大家，有需要的朋友可以参考一下
+    $list = Db::name('merchant_order_detail')->alias('a')->join('merchant_order b', 'b.id = a.order_id')->where($whereStr)->field($file)->order($order)->paginate(Config::get('list_rows'), false, ['page' => $page,'query'=>$param])->each(function($item, $key){
+
+        $item['loglist'] = Db::name('merchant_order_detail_log')->where("order_detail_id=".$item['id']." and amount>0")->field('order_sn')->select();            return $item;
+
+    });
+    $list = Db::name('merchant_order')->alias('a')
+
+        ->join('merchant_member mm', 'mm.id=a.member_id', 'LEFT')
+
+        ->where($whereStr)
+
+        ->field($file)
+
+        ->order(['a.create_time' => 'desc'])
+
+    ->paginate(Config::get('list_rows'), false, ['page' => $page,'query'=>$param])
+
+    ->each(function($item,$key){                    if($item['pid'] == 0) {
+
+        $item['company_name'] = Db::name('merchant')->where(['member_id'=>$item['member_id']])->value('company_name');
+
+        $item['sub_company_name'] = Db::name('merchant')->where(['member_id'=>$item['member_id']])->value('sub_company_name');
+
+        $item['corporation'] = Db::name('merchant')->where(['member_id'=>$item['member_id']])->value('corporation');
+
+    } else {
+
+        $item['company_name'] = Db::name('merchant')->where(['member_id'=>$item['pid']])->value('company_name');
+
+        $item['sub_company_name'] = Db::name('merchant')->where(['member_id'=>$item['pid']])->value('sub_company_name');
+
+        $item['corporation'] = Db::name('merchant')->where(['member_id'=>$item['pid']])->value('corporation');
+
+    }                    return $item;
+
+    });
+
+
+    $merchant_member_list = Db::name('merchant_member')->alias('mm')
+
+        ->join('merchant m', 'm.member_id = mm.id', 'LEFT')
+
+        ->join('merchant_type mt', 'm.merchant_type_id = mt.id', 'LEFT')
+
+        ->where($where)
+
+        ->field($field)
+
+        ->order(['mm.is_lock' => 'asc','mm.create_time' => 'desc'])
+
+    ->paginate(Config::get('list_rows'), false, ['page' => $page, 'query' => $param])
+
+    ->each(function($item, $key){                                    if($item['mt_pid']=='0'){
+
+        $item['cate'] = '一级';
+
+    } else {
+
+        $item['cate'] = Db::name('merchant_type')->where("id=".$item['mt_pid'])->value('name');
+
+    }                                    return $item;
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 qqqqqqqqqqqqqqqqqqqqqqqqq
 
