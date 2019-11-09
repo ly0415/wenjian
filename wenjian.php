@@ -8,7 +8,7 @@ s 是当前访问的控制器方法（http://www.phpstudy.net/index.php?s=%2Fsto
 
 get方法访问s中的访问方法  带入参数get('sourcename')
 
-
+22222222222222
 
 
 <?php //if (isset($roionList['url'])):  ?>
